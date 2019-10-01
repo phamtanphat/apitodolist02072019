@@ -8,9 +8,15 @@
 
     $data = mysqli_query($con,$insertAccount);
 
+    class Response{
+        function __construct($success,$message){
+            $this->success=$success;
+            $this->message=$message;
+        }
+    }
     if($data){
-        echo "Thanh cong";
+        echo json_encode(new Response(true , "Thành công"));
     }else{
-        echo "That bai";
+        echo json_encode(new Response(true , "Thất bại"));
     }
 ?>
