@@ -1,6 +1,6 @@
 <?php
     require("connect.php");
-
+    require("response.php");
     $username = $_POST['username'];
     $password = $_POST['password'];
     
@@ -8,15 +8,9 @@
 
     $data = mysqli_query($con,$insertAccount);
 
-    class Response{
-        function __construct($success,$message){
-            $this->success=$success;
-            $this->message=$message;
-        }
-    }
     if($data){
         echo json_encode(new Response(true , "Thành công"));
     }else{
-        echo json_encode(new Response(true , "Thất bại"));
+        echo json_encode(new Response(false , "Thất bại"));
     }
 ?>
